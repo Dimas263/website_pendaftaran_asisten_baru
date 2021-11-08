@@ -11,35 +11,35 @@ class Kontenweb extends CI_Controller
 
     public function index()
     {
-        $this->load->view('bagian/kepala');
-        $this->load->view('utama');
-        $this->load->view('bagian/bawah');
+        $this->load->view('bagian/header');
+        $this->load->view('home');
+        $this->load->view('bagian/footer');
     }
 
     public function addData()
     {
         $this->load->model('Modeldata');
         $this->Modeldata->addData();
-        redirect('Kontenweb/dataMahasiswa');
+        redirect('Kontenweb/data_mahasiswa');
     }
 
-    public function dataMahasiswa()
+    public function data_mahasiswa()
     {
         $data['mahasiswa'] = $this->Modeldata->getdata();
-        $this->load->view('bagian/kepala');
-        $this->load->view('dataMahasiswa', $data);
-	$this->load->view('bagian/bawah');
+        $this->load->view('bagian/header');
+        $this->load->view('data_mahasiswa', $data);
+	$this->load->view('bagian/footer');
     }
 
     public function editData()
     {
         $this->Modeldata->editData();
-        redirect('Kontenweb/dataMahasiswa');
+        redirect('Kontenweb/data_mahasiswa');
     }
 	public function deleteData()
 	{
 		$id = $_GET['id'];
 		$this->Modeldata->deleteData($id);
-		redirect('Kontenweb/dataMahasiswa');
+		redirect('Kontenweb/data_mahasiswa');
 	}
 }

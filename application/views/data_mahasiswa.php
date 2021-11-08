@@ -1,12 +1,12 @@
 <div class="container">
 <br>
 <br>
-    <a href="<?= base_url() ?>" class="btn btn-primary mt-3" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/add--v1.png"/> Tambah Data</a>
+	<a href="<?= base_url() ?>" class="btn btn-primary mt-3" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/add--v1.png"/> Tambah Data</a>
     <div class="card card-body mt-3">
         <h4>Data Mahasiswa</h4>
 
         <table class="table" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-            <thead class="thead-dark">
+            <thead class="thead-dark" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);">
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama</th>
