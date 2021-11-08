@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Kontenweb extends CI_Controller
+class E_Registration extends CI_Controller
 {
     public function __construct()
     {
@@ -20,7 +20,7 @@ class Kontenweb extends CI_Controller
     {
         $this->load->model('Modeldata');
         $this->Modeldata->addData();
-        redirect('Kontenweb/data_mahasiswa');
+        redirect('E_Registration/data_mahasiswa');
     }
 
     public function data_mahasiswa()
@@ -34,12 +34,12 @@ class Kontenweb extends CI_Controller
     public function editData()
     {
         $this->Modeldata->editData();
-        redirect('Kontenweb/data_mahasiswa');
+        redirect('E_Registration/data_mahasiswa');
     }
 	public function deleteData()
 	{
 		$id = $_GET['id'];
 		$this->Modeldata->deleteData($id);
-		redirect('Kontenweb/data_mahasiswa');
+		redirect('E_Registration/data_mahasiswa');
 	}
 }

@@ -28,8 +28,8 @@
                         <td><?= $mhs['kota_lahir'] ?></td>
                         <td><?= $mhs['alamat'] ?></td>
                         <td>
-                            <a href="<?= base_url('Kontenweb/deleteData') ?>?id=<?= $mhs['id_mahasiswa'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('are you sure?')" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"><img src="https://img.icons8.com/material-rounded/24/ffffff/trash.png"/> Hapus</a>
-                            <button type="button" href="<?= base_url('Kontenweb/editData'); ?>" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editDataModal<?= $mhs['id_mahasiswa'] ?>" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"><img src="https://img.icons8.com/material-outlined/24/ffffff/pencil--v2.png"/> Ubah</button>
+                            <a href="<?= base_url('E_Registration/deleteData') ?>?id=<?= $mhs['id_mahasiswa'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('are you sure?')" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"><img src="https://img.icons8.com/material-rounded/24/ffffff/trash.png"/> Hapus</a>
+                            <button type="button" href="<?= base_url('E_Registration/editData'); ?>" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editDataModal<?= $mhs['id_mahasiswa'] ?>" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"><img src="https://img.icons8.com/material-outlined/24/ffffff/pencil--v2.png"/> Ubah</button>
                         </td>
                     </tr>
                 <?php endforeach ?>
@@ -49,7 +49,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?= base_url('Kontenweb/editData') ?>" method="post">
+                    <form action="<?= base_url('E_Registration/editData') ?>" method="post">
 
 
                         <div class="form-group">

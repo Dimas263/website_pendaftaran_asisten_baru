@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <div class="card card-body border-info col-6 mx-auto" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-        <form action="<?= base_url('Kontenweb/addData') ?>" method="post">
+        <form action="<?= base_url('E_Registration/addData') ?>" method="post">
             <h4 class="text-center">Biodata Siswa</h4>
             <div class="form-group">
 
