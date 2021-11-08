@@ -18,8 +18,8 @@
 
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-success">
-    <a class="navbar-brand" href="#" align="center">PRAKTIKUM<br>PEMROGRAMAN WEB</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-success" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);">
+    <a class="navbar-brand" href="#" align="center">PRAKTIKUM - LAB TI<br>PEMROGRAMAN WEB</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -27,10 +27,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url() ?>"><h5 style="color: white;font-weight: normal;">Home</h5></a>
+                <a class="nav-link" href="<?= base_url() ?>"><h5 style="color: white;font-weight: normal;"><img src="https://img.icons8.com/material-rounded/24/ffffff/home.png"/> Home</h5></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('Kontenweb/dataMahasiswa') ?>"><h5 style="color: white;font-weight: normal;">Data Mahasiswa</h5></a>
+                <a class="nav-link" href="<?= base_url('Kontenweb/dataMahasiswa') ?>"><h5 style="color: white;font-weight: normal;"><img src="https://img.icons8.com/material-sharp/24/ffffff/student-female.png"/> Data Mahasiswa</h5></a>
             </li>
 			<!--
             <li class="nav-item">
