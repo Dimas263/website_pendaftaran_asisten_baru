@@ -104,7 +104,7 @@ class CI_Config {
 			}
 			else
 			{
-				$base_url = 'http://dimas263.loca.lt/';
+				$base_url = 'http://localhost.loca.lt/';
 			}
 
 			$this->set_item('base_url', $base_url);
