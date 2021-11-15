@@ -28,7 +28,7 @@ class E_Registration extends CI_Controller
         $data['mahasiswa'] = $this->Modeldata->getdata();
         $this->load->view('bagian/header');
         $this->load->view('data_mahasiswa', $data);
-	$this->load->view('bagian/footer');
+		$this->load->view('bagian/footer');
     }
 
     public function editData()

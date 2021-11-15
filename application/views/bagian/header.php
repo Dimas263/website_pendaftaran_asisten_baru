@@ -31,7 +31,7 @@
                 <a class="nav-link" href="<?= base_url() ?>"><h5 style="color: white;font-weight: normal;"><img src="https://img.icons8.com/material-rounded/24/ffffff/home.png"/> Home</h5></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('E_Registration/data_mahasiswa') ?>"><h5 style="color: white;font-weight: normal;"><img src="https://img.icons8.com/material-sharp/24/ffffff/student-female.png"/> Data Mahasiswa</h5></a>
+                <a class="nav-link" href="<?= base_url('index.php/E_Registration/data_mahasiswa') ?>"><h5 style="color: white;font-weight: normal;"><img src="https://img.icons8.com/material-sharp/24/ffffff/student-female.png"/> Data Mahasiswa</h5></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="http://ti.lab.gunadarma.ac.id/praktikum/" target="_blank" style="color: white"><img src="https://img.icons8.com/material-outlined/24/ffffff/laptop.png"/> PRAKTIKUM</a>

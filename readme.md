@@ -10,6 +10,12 @@ Membuat website sederhana menggunakan framework codeigniter
 ## Data Mahasiswa
 <img src="system/assets/img/data_mahasiswa.png" alt="alt text" width="600"/>
 
+## Edit
+<img src="system/assets/img/edit.png" alt="alt text" width="600"/>
+
+## Delete
+<img src="system/assets/img/delete.png" alt="alt text" width="600"/>
+
 # LICENSE
 
 MIT License
