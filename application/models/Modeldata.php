@@ -2,6 +2,7 @@
 
 class Modeldata extends CI_Model
 {
+	/**
     public function addData()
     {
 		$query = $this->db->query('SELECT * FROM mahasiswa');
@@ -40,4 +41,5 @@ class Modeldata extends CI_Model
 		$this->db->where('id_mahasiswa', $id);
 		$this->db->delete('mahasiswa');
 	}
+	 **/
 }

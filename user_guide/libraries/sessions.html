@@ -1165,7 +1165,7 @@ the link above.</p>
 <p>For the most common case however, a simple <code class="docutils literal"><span class="pre">host:port</span></code> pair should be
 sufficient:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;sess_driver&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;redis&#39;</span><span class="p">;</span>
-<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;sess_save_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;tcp://localhost.loca.lt:6379&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;sess_save_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;tcp://localhost:6379&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -1191,7 +1191,7 @@ considered as it may result in loss of sessions.</p>
 <p>The <code class="docutils literal"><span class="pre">$config['sess_save_path']</span></code> format is fairly straightforward here,
 being just a <code class="docutils literal"><span class="pre">host:port</span></code> pair:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;sess_driver&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;memcached&#39;</span><span class="p">;</span>
-<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;sess_save_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;localhost.loca.lt:11211&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;sess_save_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;localhost:11211&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="section" id="id1">
@@ -1201,9 +1201,9 @@ third colon-separated (<code class="docutils literal"><span class="pre">:weight<
 to note that we haven’t tested if that is reliable.</p>
 <p>If you want to experiment with this feature (on your own risk), simply
 separate the multiple server paths with commas:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="c1">// localhost.loca.lt will be given higher priority (5) here,</span>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="c1">// localhost will be given higher priority (5) here,</span>
 <span class="c1">// compared to 192.0.2.1 with a weight of 1.</span>
-<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;sess_save_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;localhost.loca.lt:11211:5,192.0.2.1:11211:1&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;sess_save_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;localhost:11211:5,192.0.2.1:11211:1&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
