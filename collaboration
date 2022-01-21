@@ -1,0 +1,25 @@
+url
+http://webku.one/manlan_test.php
+
+local
+http://dimas263.loca.lt/bangkinglab_ug/pendaftaran%20asisten%20baru/
+
+curl
+<?php
+function getter($url) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    $data = curl_exec($ch);
+    curl_close($ch);
+    return $data;
+}
+
+echo getter('http://dimas263.loca.lt/bangkinglab_ug/pendaftaran%20asisten%20baru/');
+
+host : webku.one
+Login:	manlan@webku.one
+Password:	manlanoprec@webku.one
+Path:	/home/webkuone/public_html/manlan
