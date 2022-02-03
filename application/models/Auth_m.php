@@ -4,11 +4,12 @@ class Auth_m extends CI_Model{
 	public function login($post){
 		$this->db->select('*');
 		$this->db->from('manlan_admin');
-		$this->db->where('email',$post['email']);
+		$this->db->where('npm',$post['npm']);
 		$this->db->where('password',sha1($post['password']));
 		$query = $this->db->get();
 		return $query;
 	}
+
 	public function get($id = null){
 		$this->db->from('manlan_admin');
 		if($id != null){
@@ -19,7 +20,14 @@ class Auth_m extends CI_Model{
 	}
 
 	public function register(){
-		$config['upload_path'] = './assets/upload/foto/';
+
+		$directoryName = './assets/upload/foto/'.$_POST['nama'].'/';
+		/* Check if the directory already exists. */
+		if (!is_dir($directoryName)) {
+			/* Directory does not exist, so lets create it. */
+			mkdir($directoryName, 0755);
+		}
+		$config['upload_path'] = $directoryName;
 		$config['allowed_types'] = 'jpeg|jpg|png';
 		$config['max_size'] = 2048;
 
@@ -42,15 +50,14 @@ class Auth_m extends CI_Model{
 			$query = $this->db->query('SELECT * FROM manlan_admin');
 			$jumlah_data = $query->num_rows();
 			$i = $jumlah_data + 1;
-			$ql = $this->db->select('email')->from('manlan_admin')->where('email',$_POST['email'])->get();
+			$ql = $this->db->select('email')->from('manlan_admin')->where('npm',$_POST['npm'])->get();
 
 			if( $ql->num_rows() > 0 ) {
 				echo "<script>
-						alert('Email anda sudah ada, silahkan login');
+						alert('Akun anda sudah ada, silahkan login');
     				  </script>";
 			} else {
 				$data = [
-					'id_user' => $i,
 					'email' => $_POST['email'],
 					'password' => sha1($_POST['signup-password']),
 					'nama' => $_POST['nama'],

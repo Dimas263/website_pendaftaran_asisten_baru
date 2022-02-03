@@ -22,7 +22,7 @@ class Auth extends CI_Controller
 	}
 	public function register()
 	{
-		$this->load->view('admin/auth/register');
+		$this->load->view('admin/auth/deadline');
 	}
 	public function process()
 	{
@@ -44,7 +44,7 @@ class Auth extends CI_Controller
 			}
 			else{
 				echo "<script>
-						alert('maaf login gagal, email / password salah');
+						alert('maaf login gagal, npm / password salah');
 						window.location='".base_url('auth/login')."';
 					  </script>";
 			}

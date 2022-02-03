@@ -58,7 +58,7 @@
 										<tbody>
 										<tr>
 											<td class="text-center">
-												<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$aslab['foto']?>" width="200" height="200" alt="">
+												<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$aslab['nama']?>/<?=$aslab['foto']?>" width="200" height="200" alt="">
 											</td>
 											<td class="font-w600"><b><?=$aslab['nama']?></b></td>
 											<?php
@@ -75,19 +75,19 @@
 											?>
 											<td class="text-center">
 												<?php
-												if($aslab['status_peserta'] == 'proses'){
-													?>
-													<span class="badge badge-warning">Proses</span><br>
-													<?php
-												}
-												else if($aslab['status_peserta'] == 'lulus'){
+												if($aslab['seleksi_ujian'] == 'ya'){
 													?>
 													<span class="badge badge-success">Lulus</span>
 													<?php
 												}
-												else {
+												else if($aslab['seleksi_ujian'] == 'tidak'){
 													?>
 													<span class="badge badge-danger">Tolak</span><br>
+													<?php
+												}
+												else {
+													?>
+													<span class="badge badge-warning">Proses</span><br>
 													<?php
 												}
 												?>
@@ -95,7 +95,7 @@
 											<td class="text-center">
 												<div class="btn-group">
 													<a type="button" href="<?=base_url('oprec/berkas/')?>" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#berkas_asisten<?= $aslab['id_user'] ?>" title="Detail">
-														<i>Detail</i>
+														<i>Cek Hasil Ujian</i>
 													</a>
 												</div>
 											</td>
@@ -147,7 +147,7 @@
 										foreach ($asisten as $aslab) : ?>
 										<tr>
 											<td class="text-center">
-												<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$aslab['foto']?>" width="200" height="200" alt="">
+												<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$aslab['nama']?>/<?=$aslab['foto']?>" width="200" height="200" alt="">
 											</td>
 											<td class="font-w600"><b><?=$aslab['nama']?></b></td>
 											<?php
@@ -164,19 +164,19 @@
 											?>
 											<td class="text-center">
 												<?php
-												if($aslab['status_peserta'] == 'proses'){
-													?>
-													<span class="badge badge-warning">Proses</span><br>
-													<?php
-												}
-												else if($aslab['status_peserta'] == 'lulus'){
+												if($aslab['seleksi_ujian'] == 'ya'){
 													?>
 													<span class="badge badge-success">Lulus</span>
 													<?php
 												}
-												else {
+												else if($aslab['seleksi_ujian'] == 'tidak'){
 													?>
 													<span class="badge badge-danger">Tolak</span><br>
+													<?php
+												}
+												else {
+													?>
+													<span class="badge badge-warning">Proses</span><br>
 													<?php
 												}
 												?>
@@ -201,7 +201,7 @@
 											<td class="text-center">
 												<div class="btn-group">
 													<a type="button" href="<?=base_url('oprec/berkas/')?>" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#berkas_asisten<?= $aslab['id_user'] ?>" title="Detail">
-														<i>Detail</i>
+														<i>Cek Hasil Ujian</i>
 													</a>
 												</div>
 											</td>
@@ -253,7 +253,7 @@
 										foreach ($staff as $aslab) : ?>
 										<tr>
 											<td class="text-center">
-												<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$aslab['foto']?>" width="200" height="200" alt="">
+												<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$aslab['nama']?>/<?=$aslab['foto']?>" width="200" height="200" alt="">
 											</td>
 											<td class="font-w600"><b><?=$aslab['nama']?></b></td>
 											<?php
@@ -270,19 +270,19 @@
 											?>
 											<td class="text-center">
 												<?php
-												if($aslab['status_peserta'] == 'proses'){
-													?>
-													<span class="badge badge-warning">Proses</span><br>
-													<?php
-												}
-												else if($aslab['status_peserta'] == 'lulus'){
+												if($aslab['seleksi_ujian'] == 'ya'){
 													?>
 													<span class="badge badge-success">Lulus</span>
 													<?php
 												}
-												else {
+												else if($aslab['seleksi_ujian'] == 'tidak'){
 													?>
 													<span class="badge badge-danger">Tolak</span><br>
+													<?php
+												}
+												else {
+													?>
+													<span class="badge badge-warning">Proses</span><br>
 													<?php
 												}
 												?>
@@ -290,7 +290,7 @@
 											<td class="text-center">
 												<div class="btn-group">
 													<a type="button" href="<?=base_url('oprec/berkas/')?>" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#berkas_asisten<?= $aslab['id_user'] ?>" title="Detail">
-														<i>Detail</i>
+														<i>Cek Hasil Ujian</i>
 													</a>
 												</div>
 											</td>
@@ -318,7 +318,7 @@ $this->db->from('manlan_admin');
 $this->db->where_in('sebagai', $list_sebagai);
 $asisten = $this->db->get()->result_array();
 foreach ($asisten as $detail) : ?>
-	<div class="modal fade" id="berkas_asisten<?= $detail['id_user'] ?>" tabindex="-1" role="dialog" aria-labelledby="berkas_asiste" aria-hidden="true">
+	<div class="modal fade" id="berkas_asisten<?= $detail['id_user'] ?>" tabindex="-1" role="dialog" aria-labelledby="berkas_asisten" aria-hidden="true">
 		<div class="modal-dialog modal-lg modal-dialog-fromleft modal-dialog-popou" role="document">
 			<div class="modal-content">
 				<div class="block block-themed block-transparent mb-0">
@@ -376,7 +376,7 @@ foreach ($asisten as $detail) : ?>
 													?>
 												</div>
 												<div class="block-content block-content-full bg-gd-dusk">
-													<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$detail['foto']?>" width="200" height="200" alt="">
+													<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$detail['nama']?>/<?=$detail['foto']?>" width="200" height="200" alt="">
 												</div>
 												<div class="block-content block-content-full">
 													<div class="font-w600 mb-5"><?= $detail['nama'] ?></div>
@@ -390,41 +390,51 @@ foreach ($asisten as $detail) : ?>
 									</table>
 									<table class="table table-borderless table-vcenter mb-30">
 										<tbody>
+										<?php
+										$id_peserta = $detail['id_user'];
+										$this->db->select('*');
+										$this->db->from('manlan_nilaiujian');
+										$this->db->where('id_penilaian', $id_peserta);
+										$peserta = $this->db->get()->result_array();
+										$no=1;
+										?>
+										<?php foreach ($peserta as $nilai_peserta) : ?>
 										<tr class="table-active">
-											<th>Upload Berkas</th>
+											<th>Nilai Hasil Ujian</th>
 											<th class="text-right" style="width: 15px;"></th>
 											<th class="text-right" style="width: 15px;"></th>
 										</tr>
 										<tr>
 											<td>
-												<a href="<?=base_url('assets/upload/dokumen/')?><?= $detail['cv'] ?>" target="_blank">CV</a>
+												<label for="example-nf-nama">Matematika</label>
+												<input type="text" name="nama" class="form-control" id="example-nf-nama" placeholder="<?= $nilai_peserta['matematika'] ?>">
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<a href="<?=base_url('assets/upload/dokumen/')?><?= $detail['surat_lamaran'] ?>" target="_blank">Surat Lamaran</a>
+												<label for="example-nf-nama">Pengetahuan Umum</label>
+												<input type="text" name="nama" class="form-control" id="example-nf-nama" placeholder="<?= $nilai_peserta['pengetahuan_umum'] ?>">
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<a href="<?=base_url('assets/upload/dokumen/')?><?= $detail['rangkuman_nilai'] ?>" target="_blank">Rangkuman Nilai</a>
+												<label for="example-nf-nama">Bahasa Inggris</label>
+												<input type="text" name="nama" class="form-control" id="example-nf-nama" placeholder="<?= $nilai_peserta['bahasa_inggris'] ?>">
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<a href="<?=base_url('assets/upload/dokumen/')?><?= $detail['krs_upload'] ?>" target="_blank">KRS Aktif</a>
+												<label for="example-nf-nama">Pengetahuan Bank</label>
+												<input type="text" name="nama" class="form-control" id="example-nf-nama" placeholder="<?= $nilai_peserta['pengetahuan_bank'] ?>">
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<a href="<?=base_url('assets/upload/dokumen/')?><?= $detail['ktm_upload'] ?>" target="_blank">KTM</a>
+												<label for="example-nf-nama">Dasar Pemrograman</label>
+												<input type="text" name="nama" class="form-control" id="example-nf-nama" placeholder="<?= $nilai_peserta['dasar_pemrograman'] ?>">
 											</td>
 										</tr>
-										<tr>
-											<td>
-												<a href="<?=base_url('assets/upload/dokumen/')?><?= $detail['sertifikat'] ?>" target="_blank">Sertifikat</a>
-											</td>
-										</tr>
+										<?php endforeach ?>
 										</tbody>
 									</table>
 								</div>

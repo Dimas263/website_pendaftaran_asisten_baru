@@ -49,7 +49,6 @@
 					<tr class="table-active">
 						<th class="text-center" style="width: 8%;"><b>No</b></th>
 						<th class="text-left" style="width: 28%;"><b>Nama</b></th>
-						<th class="text-left" style="width: 28%;"><b>Email</b></th>
 						<th class="text-center" style="width: 25%;"><b>Sebagai</b></th>
 						<th class="text-center" style="width: 20%;"><b>Status</b></th>
 						<th class="text-center" style="width: 20%;"><b>Nilai</b></th>
@@ -69,9 +68,26 @@
 						<tr>
 							<td class="text-center"><?php echo $no++ ?></td>
 							<td class="font-w600"><?php echo $aslab['nama'] ?></td>
-							<td class="font-w600"><?php echo $aslab['email'] ?></td>
 							<td class="text-center font-w600"><?php echo $aslab['sebagai'] ?></td>
-							<td class="text-center"><?php echo $aslab['status_peserta'] ?></td>
+							<td class="text-center">
+								<?php
+								if($aslab['seleksi_staff'] == 'ya'){
+									?>
+									<span class="badge badge-success">Lulus</span>
+									<?php
+								}
+								else if($aslab['seleksi_staff'] == 'tidak'){
+									?>
+									<span class="badge badge-danger">Tolak</span><br>
+									<?php
+								}
+								else {
+									?>
+									<span class="badge badge-warning">Proses</span><br>
+									<?php
+								}
+								?>
+							</td>
 							</td>
 							<td class="text-center">
 								<div class="btn-group">
@@ -113,7 +129,6 @@
 								<tr class="table-active">
 									<th class="text-center" style="width: 5%;"><b>No</b></th>
 									<th class="text-left" style="width: 20%;"><b>Nama</b></th>
-									<th class="text-left" style="width: 20%;"><b>Email</b></th>
 									<th class="text-center" style="width: 20%;"><b>Sebagai</b></th>
 									<th class="text-center" style="width:10%;"><b>Status</b></th>
 									<th class="text-center" style="width: 20%;"><b>Nilai</b></th>
@@ -133,9 +148,26 @@
 									<tr>
 										<td class="text-center"><?php echo $no++ ?></td>
 										<td class="font-w300"><?php echo $aslab['nama'] ?></td>
-										<td class="font-w600"><?php echo $aslab['email'] ?></td>
 										<td class="text-center font-w600"><?php echo $aslab['sebagai'] ?></td>
-										<td class="text-center"><?php echo $aslab['status_peserta'] ?></td>
+										<td class="text-center">
+											<?php
+											if($aslab['seleksi_staff'] == 'ya'){
+												?>
+												<span class="badge badge-success">Lulus</span>
+												<?php
+											}
+											else if($aslab['seleksi_staff'] == 'tidak'){
+												?>
+												<span class="badge badge-danger">Tolak</span><br>
+												<?php
+											}
+											else {
+												?>
+												<span class="badge badge-warning">Proses</span><br>
+												<?php
+											}
+											?>
+										</td>
 										<td class="text-center">
 											<div class="btn-group">
 												<button type="button" class="btn btn-sm btn-alt-primary" data-toggle="modal" data-target="#hasil_nilai<?= $aslab['id_user'] ?>" title="Review">
@@ -265,7 +297,7 @@ foreach ($asisten as $detail) : ?>
 
 <?php
 $this->db->select("id_penilaian, penyampaian, penguasaan, pengetahuan, pemrograman, kerapihan, ketegasan, rekomendasi, nama_penilai, hasil");
-$this->db->from('manlan_nilaitutor');
+$this->db->from('manlan_nilaistaff');
 $this->db->join('manlan_admin', 'id_penilaian = id_user');
 $asisten = $this->db->get()->result_array();
 foreach ($asisten as $detail) : ?>
@@ -306,7 +338,7 @@ foreach ($asisten as $detail) : ?>
 												<?php
 												$id_peserta = $detail['id_penilaian'];
 												$this->db->select('*');
-												$this->db->from('manlan_nilaitutor');
+												$this->db->from('manlan_nilaistaff');
 												$this->db->where('id_penilaian', $id_peserta);
 												$peserta = $this->db->get()->result_array();
 												$no=1;

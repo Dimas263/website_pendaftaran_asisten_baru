@@ -12,6 +12,15 @@
 		</div>
 	</div>
 	<!-- END Hero -->
+
+	<br>
+	<!--
+	<h3 class="text-center">
+		Pendaftaran Berakhir<br>
+		<p class="text-center text-primary" id="deadline"></p>
+	</h3>
+	-->
+
 	<?php
 	if($this->session->userdata('sebagai') == 'calonasisten' || $this->session->userdata('sebagai') == 'calonprogrammer' || $this->session->userdata('sebagai') == 'admin'){ ?>
 	<!-- Page Content -->
@@ -36,7 +45,7 @@
 								<a href="<?=base_url('oprec/berkas/')?>">Pengumpulan Berkas</a>
 							</th>
 							<th class="text-center text-danger" style="width: 100px;">
-								<i>20 Desember - 31 Januari</i>
+								<i>20 Desember - 3 Februari</i>
 							</th>
 						</tr>
 					</tbody>
@@ -206,7 +215,10 @@
 									<tr>
 										<th class="text-center" style="width: 100px;"><b>Foto</b></th>
 										<th><b>Nama</b></th>
+                                        <th class="text-center" style="width: 30%;"><b>Npm</b></th>
+										<th class="text-center" style="width: 30%;"><b>Telepon</b></th>
 										<th class="text-center" style="width: 30%;"><b>Sebagai</b></th>
+										<th class="text-center" style="width: 30%;"><b>Tahap</b></th>
 										<th class="text-center" style="width: 15%;"><b>Status</b></th>
 										<th class="text-center" style="width: 100px;"><b>Pengaturan</b></th>
 									</tr>
@@ -221,9 +233,11 @@
 								foreach ($asisten as $aslab) : ?>
 									<tr>
 										<td class="text-center">
-											<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$aslab['foto']?>" width="200" height="200" alt="">
+											<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$aslab['nama']?>/<?=$aslab['foto']?>" width="200" height="200" alt="">
 										</td>
 										<td class="font-w600"><?php echo $aslab['nama']?></td>
+                                        <td class="font-w600"><?php echo $aslab['npm']?></td>
+										<td class="text-center font-w600"><a href="https://wa.me/+62<?=$aslab['telepon']?>" target="_blank"><?php echo $aslab['telepon']?></a></td>
 										<td class="text-center">
 											<?php
 											if($aslab['sebagai'] == 'calonasisten'){
@@ -234,6 +248,43 @@
 											else if($aslab['sebagai'] == 'calonprogrammer'){
 												?>
 												Calon Programmer
+												<?php
+											}
+											?>
+										</td>
+										<td class="text-center">
+											<?php
+											if($aslab['seleksi_berkas'] != 'ya' && $aslab['seleksi_ujian'] != 'ya' && $aslab['seleksi_wawancara'] != 'ya' && $aslab['seleksi_staff'] != 'ya'){
+												?>
+												<div class="font-size-sm text-muted text-black">Tahap Berkas</div>
+												<?php
+											}
+											?>
+											<?php
+											if($aslab['seleksi_berkas'] == 'ya' && $aslab['seleksi_ujian'] != 'ya' && $aslab['seleksi_wawancara'] != 'ya' && $aslab['seleksi_staff'] != 'ya'){
+												?>
+												<div class="font-size-sm text-muted text-black">Tahap Ujian</div>
+												<?php
+											}
+											?>
+											<?php
+											if($aslab['seleksi_berkas'] == 'ya' && $aslab['seleksi_ujian'] == 'ya' && $aslab['seleksi_wawancara'] != 'ya' && $aslab['seleksi_staff'] != 'ya'){
+												?>
+												<div class="font-size-sm text-muted text-black">Tahap Tutor, Wawancara, dan Pemrograman (Programmer)</div>
+												<?php
+											}
+											?>
+											<?php
+											if($aslab['seleksi_berkas'] == 'ya' && $aslab['seleksi_ujian'] == 'ya' && $aslab['seleksi_wawancara'] == 'ya' && $aslab['seleksi_staff'] != 'ya'){
+												?>
+												<div class="font-size-sm text-muted text-black">Tahap Staff</div>
+												<?php
+											}
+											?>
+											<?php
+											if($aslab['seleksi_berkas'] == 'ya' && $aslab['seleksi_ujian'] = 'ya' && $aslab['seleksi_wawancara'] == 'ya' && $aslab['seleksi_staff'] == 'ya'){
+												?>
+												<div class="font-size-sm text-muted text-black">Lulus Semua Seleksi</div>
 												<?php
 											}
 											?>
@@ -296,7 +347,10 @@
 								<tr>
 									<th class="text-center" style="width: 100px;"><b>Foto</b></th>
 									<th><b>Nama</b></th>
+                                  	<th class="text-center" style="width: 30%;"><b>Npm</b></th>
+									<th class="text-center" style="width: 30%;"><b>Telepon</b></th>
 									<th class="text-center" style="width: 30%;"><b>Sebagai</b></th>
+									<th class="text-center" style="width: 15%;"><b>Tahap</b></th>
 									<th class="text-center" style="width: 15%;"><b>Status</b></th>
 									<th class="text-center" style="width: 100px;"><b>Pengaturan</b></th>
 								</tr>
@@ -311,9 +365,11 @@
 								foreach ($staff as $aslab) : ?>
 								<tr>
 									<td class="text-center">
-										<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$aslab['foto']?>" width="200" height="200" alt="">
+										<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$aslab['nama']?>/<?=$aslab['foto']?>" width="200" height="200" alt="">
 									</td>
 									<td class="font-w600"><b><?=$aslab['nama']?></b></td>
+                                  	<td class="font-w600"><b><?=$aslab['npm']?></b></td>
+									<td class="text-center font-w600"><a href="https://wa.me/+62<?=$aslab['telepon']?>" target="_blank"><?php echo $aslab['telepon']?></a></td>
 									<?php
 									if($aslab['sebagai'] == 'calonasisten'){
 										?>
@@ -326,6 +382,43 @@
 										<?php
 									}
 									?>
+									<td class="text-center">
+										<?php
+										if($aslab['seleksi_berkas'] != 'ya' && $aslab['seleksi_ujian'] != 'ya' && $aslab['seleksi_wawancara'] != 'ya' && $aslab['seleksi_staff'] != 'ya'){
+											?>
+											<div class="font-size-sm text-muted text-black">Tahap Berkas</div>
+											<?php
+										}
+										?>
+										<?php
+										if($aslab['seleksi_berkas'] == 'ya' && $aslab['seleksi_ujian'] != 'ya' && $aslab['seleksi_wawancara'] != 'ya' && $aslab['seleksi_staff'] != 'ya'){
+											?>
+											<div class="font-size-sm text-muted text-black">Tahap Ujian</div>
+											<?php
+										}
+										?>
+										<?php
+										if($aslab['seleksi_berkas'] == 'ya' && $aslab['seleksi_ujian'] == 'ya' && $aslab['seleksi_wawancara'] != 'ya' && $aslab['seleksi_staff'] != 'ya'){
+											?>
+											<div class="font-size-sm text-muted text-black">Tahap Tutor, Wawancara, dan Pemrograman (Programmer)</div>
+											<?php
+										}
+										?>
+										<?php
+										if($aslab['seleksi_berkas'] == 'ya' && $aslab['seleksi_ujian'] == 'ya' && $aslab['seleksi_wawancara'] == 'ya' && $aslab['seleksi_staff'] != 'ya'){
+											?>
+											<div class="font-size-sm text-muted text-black">Tahap Staff</div>
+											<?php
+										}
+										?>
+										<?php
+										if($aslab['seleksi_berkas'] == 'ya' && $aslab['seleksi_ujian'] = 'ya' && $aslab['seleksi_wawancara'] == 'ya' && $aslab['seleksi_staff'] == 'ya'){
+											?>
+											<div class="font-size-sm text-muted text-black">Lulus Semua Seleksi</div>
+											<?php
+										}
+										?>
+									</td>
 									<td class="text-center">
 										<?php
 										if($aslab['status_peserta'] == 'proses'){
@@ -383,11 +476,13 @@
 							<div class="pb-50">
 								<div class="row justify-content-center text-center">
 									<div class="col-md-10 col-lg-8">
-										<img class="img-fluid img-thumbnail rounded-circle d-block user-img mx-auto mb-4" src="<?=base_url('assets/admin/assets/media/favicons/bangkinglab_ug.png')?>" width="100" alt="" />
+										<img class="img-fluid img-thumbnail rounded-circle d-block user-img mx-auto mb-4" src="<?=base_url('assets/public/images/member/PUTRI ASISTEN.png')?>" width="150" alt="" />
 										<h3 class="font-size-h2 font-w300 mt-20">Selamat Datang<br>Di Lab Manlan</h3>
-										<p class="text-muted">
-											Pendaftaran 20 Desember - 31 Januari
+										<!--
+										<p class="font-size-h4 font-w300 mt-20">
+											Pendaftaran Diperpanjang<br>20 Desember - 3 Februari
 										</p>
+										-->
 										<button type="button" class="btn btn-sm btn-hero btn-noborder btn-primary mb-10 mx-5" onclick="jQuery('.js-slider').slick('slickGoTo', 1);">
 											Selanjutnya <i class="fa fa-arrow-right ml-5"></i>
 										</button>
@@ -397,10 +492,16 @@
 							<div class="slick-slide pb-50">
 								<div class="row justify-content-center text-center">
 									<div class="col-md-10 col-lg-8">
-										<img class="img-fluid img-thumbnail rounded-circle d-block user-img mx-auto mb-4" src="<?=base_url('assets/public/images/member/DANUR PROGRAMMER.png')?>" width="100" alt="" />
-										<h3 class="font-size-h2 font-w300 mt-20">Pengisian Data<br>Calon Asisten</h3>
+										<img class="img-fluid img-thumbnail rounded-circle d-block user-img mx-auto mb-4" src="<?=base_url('assets/public/images/member/NIA ASISTEN.png')?>" width="150" alt="" />
+										<!--<h3 class="font-size-h2 font-w300 mt-20">Pengisian Data<br>Calon Asisten</h3>-->
+										<h3 class="font-size-h2 font-w300 mt-20">Tahap Seleksi<br>Calon Asisten</h3>
+										<!--
 										<p class="text-muted">
 											Lengkapi profile anda dan upload berkas untuk memenuhi persyaratan pendaftaran
+										</p>
+										-->
+										<p class="text-muted">
+											Ikuti tahap seleksi dengan maksimal, tahap ujian, tahap tutor, wawancara, dan pemrograman (programmer), dan tahap wawancara staff. Good Luck..
 										</p>
 										<div class="text-center">
 											<button type="button" class="btn btn-sm btn-hero btn-noborder btn-primary mb-10 mx-5" onclick="jQuery('.js-slider').slick('slickGoTo', 2);">
@@ -413,7 +514,7 @@
 							<div class="slick-slide pb-50">
 								<div class="row justify-content-center text-center">
 									<div class="col-md-10 col-lg-8">
-										<img class="img-fluid img-thumbnail d-block user-img mx-auto mb-4" src="https://img.icons8.com/external-vitaliy-gorbachev-flat-vitaly-gorbachev/100/000000/external-pencil-back-to-school-vitaliy-gorbachev-flat-vitaly-gorbachev.png"/>
+										<img class="img-fluid img-thumbnail rounded-circle d-block user-img mx-auto mb-4" src="<?=base_url('assets/public/images/member/LUKMAN ASISTEN.png')?>" width="150" alt="" />
 										<h3 class="font-size-h2 font-w300 mt-20">Menu</h3>
 										<p class="text-muted">
 											Pilih menu yang tersedia dan ikuti petunjuk selanjutnya
@@ -496,7 +597,7 @@ foreach ($asisten as $detail) : ?>
 													?>
 												</div>
 												<div class="block-content block-content-full bg-gd-dusk">
-													<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$detail['foto']?>" width="200" height="200" alt="">
+													<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$detail['nama']?>/<?=$detail['foto']?>" width="200" height="200" alt="">
 												</div>
 												<div class="block-content block-content-full">
 													<div class="font-w600 mb-5"><?= $detail['nama'] ?></div>
@@ -517,32 +618,104 @@ foreach ($asisten as $detail) : ?>
 										</tr>
 										<tr>
 											<td>
-												<a href="<?=base_url('assets/upload/dokumen/')?><?= $detail['cv'] ?>" target="_blank">CV</a>
+												<?php
+												if($detail['cv'] == ''){
+													?>
+													<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+													<?php
+												}
+												else{
+													?>
+													<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+													<?php
+												}
+												?>
+												<a href="<?=base_url('assets/upload/dokumen/')?><?=$detail['nama']?>/<?= $detail['cv'] ?>" target="_blank">CV</a>
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<a href="<?=base_url('assets/upload/dokumen/')?><?= $detail['surat_lamaran'] ?>" target="_blank">Surat Lamaran</a>
+												<?php
+												if($detail['surat_lamaran'] == ''){
+													?>
+													<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+													<?php
+												}
+												else{
+													?>
+													<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+													<?php
+												}
+												?>
+												<a href="<?=base_url('assets/upload/dokumen/')?><?=$detail['nama']?>/<?= $detail['surat_lamaran'] ?>" target="_blank">Surat Lamaran</a>
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<a href="<?=base_url('assets/upload/dokumen/')?><?= $detail['rangkuman_nilai'] ?>" target="_blank">Rangkuman Nilai</a>
+												<?php
+												if($detail['rangkuman_nilai'] == ''){
+													?>
+													<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+													<?php
+												}
+												else{
+													?>
+													<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+													<?php
+												}
+												?>
+												<a href="<?=base_url('assets/upload/dokumen/')?><?=$detail['nama']?>/<?= $detail['rangkuman_nilai'] ?>" target="_blank">Rangkuman Nilai</a>
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<a href="<?=base_url('assets/upload/dokumen/')?><?= $detail['krs_upload'] ?>" target="_blank">KRS Aktif</a>
+												<?php
+												if($detail['krs_upload'] == ''){
+													?>
+													<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+													<?php
+												}
+												else{
+													?>
+													<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+													<?php
+												}
+												?>
+												<a href="<?=base_url('assets/upload/dokumen/')?><?=$detail['nama']?>/<?= $detail['krs_upload'] ?>" target="_blank">KRS Aktif</a>
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<a href="<?=base_url('assets/upload/dokumen/')?><?= $detail['ktm_upload'] ?>" target="_blank">KTM</a>
+												<?php
+												if($detail['ktm_upload'] == ''){
+													?>
+													<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+													<?php
+												}
+												else{
+													?>
+													<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+													<?php
+												}
+												?>
+												<a href="<?=base_url('assets/upload/dokumen/')?><?=$detail['nama']?>/<?= $detail['ktm_upload'] ?>" target="_blank">KTM</a>
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<a href="<?=base_url('assets/upload/dokumen/')?><?= $detail['sertifikat'] ?>" target="_blank">Sertifikat</a>
+												<?php
+												if($detail['sertifikat'] == ''){
+													?>
+													<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+													<?php
+												}
+												else{
+													?>
+													<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+													<?php
+												}
+												?>
+												<a href="<?=base_url('assets/upload/dokumen/')?><?=$detail['nama']?>/<?= $detail['sertifikat'] ?>" target="_blank">Sertifikat</a>
 											</td>
 										</tr>
 										</tbody>

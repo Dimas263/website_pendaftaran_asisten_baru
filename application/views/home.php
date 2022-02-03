@@ -2,6 +2,12 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-lg-8 mb-5">
+				<!--
+				<h1>
+					<p class="text-center">Pendaftaran Berakhir</p>
+					<p class="text-center text-primary" id="deadline"></p>
+				</h1>
+				-->
 				<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 					<ol class="carousel-indicators">
 						<li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"></li>
@@ -322,7 +328,7 @@
 					<span><img src="<?=base_url('assets/public/images/activity.png')?>" width="150"/></span>
 					<br>
 					<h1>Aktivitas Kami</h1>
-					<p class="text-muted my-4" style="text-align: justify">Banyak kegiatan seru yang kami lakukan untuk mengembangkan kualitas kami, seperti menjadi tutor praktikum, webinar dan sharing session, kunjungan Bank Indonesia, Makrab, Buka bersama di bulan ramadhan, Gathering, Makan-makan, dll.</p>
+					<p class="text-muted my-4" style="text-align: justify">Kami disini bekerja dan belajar, mencari pengalaman dan membangun pertemanan. Banyak kegiatan seru yang kami lakukan untuk mengembangkan kualitas diri kami, seperti menjadi tutor praktikum, webinar dan sharing session, kunjungan Bank Indonesia, Makrab, Buka bersama di bulan ramadhan, Gathering, Makan-makan, dll.</p>
 					<a data-bs-toggle="modal" data-bs-target="#modal-activity" class="btn btn-primary">Explore <span class="fs-22 ms-1 lh-1 align-middle icon">⇾</span></a>
 				</div>
 			</div>

@@ -3,7 +3,15 @@
 class Data_m extends CI_Model
 {
 	public function upload_berkas(){
-		$config['upload_path'] = './assets/upload/dokumen/';
+
+		$directoryName = './assets/upload/dokumen/'.$_POST['nama_user'].'/';
+		/* Check if the directory already exists. */
+		if (!is_dir($directoryName)) {
+			/* Directory does not exist, so lets create it. */
+			mkdir($directoryName, 0755);
+		}
+
+		$config['upload_path'] = $directoryName;
 		$config['allowed_types'] = 'pdf';
 		$config['max_size'] = 2048;
 
@@ -164,9 +172,11 @@ class Data_m extends CI_Model
 			];
 			$this->db->insert('manlan_nilaitutor', $data);
 
+			/*
 			$this->db->set('seleksi_wawancara', $_POST['rekomendasi']);
 			$this->db->where('id_user', $_POST['id_penilaian']);
 			$this->db->update('manlan_admin');
+			*/
 
 			echo "<script>
 						alert('Peserta berhasil dinilai');
@@ -218,10 +228,12 @@ class Data_m extends CI_Model
 			];
 			$this->db->insert('manlan_nilaistaff', $data);
 
+			/*
 			$this->db->set('seleksi_staff', $_POST['rekomendasi']);
 			$this->db->set('status_peserta', $_POST['hasil_tahap3']);
 			$this->db->where('id_user', $_POST['id_penilaian']);
 			$this->db->update('manlan_admin');
+			*/
 
 			echo "<script>
 						alert('Peserta berhasil dinilai');

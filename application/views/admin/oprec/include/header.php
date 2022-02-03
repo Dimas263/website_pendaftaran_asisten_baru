@@ -120,7 +120,7 @@
 					</div>
 					<div class="sidebar-mini-hidden-b text-center">
 						<a class="img-link" href="<?=base_url('oprec/admin/profile/')?>">
-							<img class="img-avatar" src="<?=base_url('assets/upload/foto/')?><?=$this->auth_libs->user_login()->foto?>"" width="200" height="200" alt="">
+							<img class="img-avatar" src="<?=base_url('assets/upload/foto/')?><?=$this->auth_libs->user_login()->nama?>/<?=$this->auth_libs->user_login()->foto?>"" width="200" height="200" alt="">
 						</a>
 						<ul class="list-inline mt-10">
 							<li class="list-inline-item">

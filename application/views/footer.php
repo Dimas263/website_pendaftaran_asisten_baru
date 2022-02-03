@@ -32,9 +32,9 @@
 						<div class="col-12">
 							<div class="text-center">
 								<img class="img-fluid img-thumbnail rounded-circle d-block user-img mx-auto mb-4" src="<?=base_url('assets/public/images/bangkinglab_ug.png')?>" width="100" alt="" />
-								<h5 class="text-dark fs-20 text-truncate mt-3">Selamat Datang</h5>
-								<p class="text-muted">Laboratorium Manajemen Lanjut</p>
-								<p class="text-muted">Universitas Gunadarma</p>
+								<h5 class="h4 text-dark fs-20 text-truncate mt-3">Selamat Datang</h5>
+								<p class="h5 text-muted">Laboratorium Manajemen Lanjut</p>
+								<p class="h5 text-muted">Universitas Gunadarma</p>
 								<br><br>
 							</div>
 						</div>
@@ -109,7 +109,35 @@
 <script>
 	(function(){var w=window;var ic=w.callbell;if(typeof ic==="function"){ic('reattach_activator');ic('update',callbellSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Callbell=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://dash.callbell.eu/include/'+window.callbellSettings.token+'.js';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
 </script>
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Feb 3, 2022 23:59:00").getTime();
 
+// Update the count down every 1 second
+var x = setInterval(function() {
 
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("deadline").innerHTML = days + "Hari " + hours + "Jam "
+  + minutes + "Menit " + seconds + "Detik ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("deadline").innerHTML = "PENDAFTARAN DITUTUP";
+  }
+}, 1000);
+</script>
 </body>
 </html>

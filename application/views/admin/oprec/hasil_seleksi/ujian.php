@@ -3,8 +3,8 @@
 		<div class="col-md-6 col-xl-4">
 			<div class="block-content block-content-full clearfix">
 				<div class="float-left">
-					<div class="font-w600 text-primary mb-5">Muhammad Rakha Rifandi Putra</div>
-					<div class="font-w600 text-black mb-5">Calon Programmer</div>
+					<div class="font-w600 text-primary mb-5"><?=$this->auth_libs->user_login()->nama?></div>
+					<div class="font-w600 text-black mb-5"><?=$this->auth_libs->user_login()->sebagai?></div>
 					<div class="font-w600 text-success mb-5">Tanggal Ujian : 9 Februari</div>
 				</div>
 			</div>
@@ -24,7 +24,23 @@
 					</a>
 				</td>
 				<td class="text-center">
-					<span class="block-content block-content-full block-content-sm badge badge-warning">Proses Seleksi</span>
+					<?php
+					if($this->auth_libs->user_login()->seleksi_ujian == 'ya'){
+						?>
+						<span class="block-content block-content-full block-content-sm badge badge-success">Lulus Ujian</span>
+						<?php
+					}
+					else if($this->auth_libs->user_login()->seleksi_ujian == 'tidak'){
+						?>
+						<span class="block-content block-content-full block-content-sm badge badge-danger">Tidak Lulus</span><br>
+						<?php
+					}
+					else {
+						?>
+						<span class="block-content block-content-full block-content-sm badge badge-warning">Proses Seleksi</span><br>
+						<?php
+					}
+					?>
 				</td>
 			</tr>
 			</tbody>

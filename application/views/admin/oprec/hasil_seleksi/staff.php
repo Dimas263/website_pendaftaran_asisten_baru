@@ -1,5 +1,14 @@
 <div class="block block-rounded">
 	<div class="block-content">
+		<div class="col-md-6 col-xl-4">
+			<div class="block-content block-content-full clearfix">
+				<div class="float-left">
+					<div class="font-w600 text-primary mb-5"><?=$this->auth_libs->user_login()->nama?></div>
+					<div class="font-w600 text-black mb-5"><?=$this->auth_libs->user_login()->sebagai?></div>
+					<div class="font-w600 text-success mb-5">Tanggal Seleksi Staff : 28 Februari - 2 Maret</div>
+				</div>
+			</div>
+		</div>
 		<table class="table table-borderless mb-6">
 			<tbody>
 			<tr class="table-active">
