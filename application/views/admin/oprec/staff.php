@@ -61,6 +61,7 @@
 						$this->db->select('*');
 						$this->db->from('manlan_admin');
 						$this->db->where_in('sebagai', $list_sebagai);
+						$this->db->order_by('nama','asc');
 						$asisten = $this->db->get()->result_array();
 						$no=1;
 						?>
@@ -141,6 +142,7 @@
 									$this->db->select('*');
 									$this->db->from('manlan_admin');
 									$this->db->where_in('sebagai', $list_sebagai);
+									$this->db->order_by('nama','asc');
 									$asisten = $this->db->get()->result_array();
 									$no=1;
 									?>
@@ -224,8 +226,9 @@ foreach ($asisten as $detail) : ?>
 													<tr class="table-active">
 														<th class="text-center" style="width: 10%;"><b>Penyampaian</b></th>
 														<th class="text-center" style="width: 10%;"><b>Penguasaan</b></th>
-														<th class="text-center" style="width: 10%;"><b>Pengetahuan Umum</b></th>
-														<th class="text-center" style="width: 10%;"><b>Pemrograman (Programmer)</b></th>
+														<th class="text-center" style="width: 10%;"><b>Pengetahuan</b></th>
+														<th class="text-center" style="width: 10%;"><b>Kerapihan</b></th>
+														<th class="text-center" style="width: 10%;"><b>Ketegasan</b></th>
 													</tr>
 													</thead>
 													<tbody>
@@ -236,7 +239,8 @@ foreach ($asisten as $detail) : ?>
 														<td class="text-center"><input type="text" class="form-control" name="penyampaian" placeholder="(Nilai)"></td>
 														<td class="text-center"><input type="text" class="form-control" name="penguasaan" placeholder="(Nilai)"></td>
 														<td class="text-center"><input type="text" class="form-control" name="pengetahuan" placeholder="(Nilai)"></td>
-														<td class="text-center"><input type="text" class="form-control" name="pemrograman" placeholder="(Nilai)"></td>
+														<td class="text-center"><input type="text" class="form-control" name="kerapihan" placeholder="(Nilai)"></td>
+														<td class="text-center"><input type="text" class="form-control" name="ketegasan" placeholder="(Nilai)"></td>
 													</tr>
 													</tbody>
 												</table>
@@ -244,17 +248,14 @@ foreach ($asisten as $detail) : ?>
 												<table class="table table-bordered table-vcenter">
 													<thead>
 													<tr class="table-active">
-														<th class="text-center" style="width: 10%;"><b>Kerapihan</b></th>
-														<th class="text-center" style="width: 10%;"><b>Ketegasan</b></th>
+														<th class="text-center" style="width: 20%;"><b>Komentar</b></th>
 														<th class="text-center" style="width: 20%;"><b>Rekomendasi</b></th>
 														<th class="text-center" style="width: 20%;"><b>Nama Penilai</b></th>
-														<th class="text-center" style="width: 20%;"><b>Hasil</b></th>
 													</tr>
 													</thead>
 													<tbody>
 													<tr>
-														<td class="text-center"><input type="text" class="form-control" name="kerapihan" placeholder="(Nilai)"></td>
-														<td class="text-center"><input type="text" class="form-control" name="ketegasan" placeholder="(Nilai)"></td>
+														<td class="text-center"><textarea type="text" class="form-control" name="komentar" placeholder="..."></textarea></td>
 														<td class="text-center">
 															<select class="form-control" name="rekomendasi" required>
 																<option value=" ">Pilih</option>
@@ -263,15 +264,6 @@ foreach ($asisten as $detail) : ?>
 															</select>
 														</td>
 														<td class="text-center"><input type="text" class="form-control" name="nama_penilai" placeholder="Nama Penilai"></td>
-														<td class="text-center">
-															<div class="btn-group">
-																<select class="form-control" name="hasil_tahap3" required>
-																	<option value="proses">Pilih</option>
-																	<option value="lulus">Lulus</option>
-																	<option value="tidak">Tidak</option>
-																</select>
-															</div>
-														</td>
 													</tr>
 													</tbody>
 												</table>
@@ -296,7 +288,7 @@ foreach ($asisten as $detail) : ?>
 <?php endforeach ?>
 
 <?php
-$this->db->select("id_penilaian, penyampaian, penguasaan, pengetahuan, pemrograman, kerapihan, ketegasan, rekomendasi, nama_penilai, hasil");
+$this->db->select("id_penilaian, penyampaian, penguasaan, pengetahuan, kerapihan, ketegasan, komentar, rekomendasi, nama_penilai");
 $this->db->from('manlan_nilaistaff');
 $this->db->join('manlan_admin', 'id_penilaian = id_user');
 $asisten = $this->db->get()->result_array();
@@ -324,13 +316,12 @@ foreach ($asisten as $detail) : ?>
 												<tr class="table-active">
 													<th class="text-center" style="width: 10%;"><b>Penyampaian</b></th>
 													<th class="text-center" style="width: 10%;"><b>Penguasaan</b></th>
-													<th class="text-center" style="width: 10%;"><b>Pengetahuan Umum</b></th>
-													<th class="text-center" style="width: 10%;"><b>Pemrograman (Programmer)</b></th>
+													<th class="text-center" style="width: 10%;"><b>Pengetahuan</b></th>
 													<th class="text-center" style="width: 10%;"><b>Kerapihan</b></th>
 													<th class="text-center" style="width: 10%;"><b>Ketegasan</b></th>
+													<th class="text-center" style="width: 20%;"><b>Komentar</b></th>
 													<th class="text-center" style="width: 20%;"><b>Rekomendasi</b></th>
 													<th class="text-center" style="width: 20%;"><b>Nama Penilai</b></th>
-													<th class="text-center" style="width: 20%;"><b>Hasil Seleksi</b></th>
 												</tr>
 												</thead>
 												<tbody>
@@ -348,16 +339,24 @@ foreach ($asisten as $detail) : ?>
 														<td class="text-center"><?=$nilai_peserta['penyampaian']?></td>
 														<td class="text-center"><?=$nilai_peserta['penguasaan']?></td>
 														<td class="text-center"><?=$nilai_peserta['pengetahuan']?></td>
-														<td class="text-center"><?=$nilai_peserta['pemrograman']?></td>
 														<td class="text-center"><?=$nilai_peserta['kerapihan']?></td>
 														<td class="text-center"><?=$nilai_peserta['ketegasan']?></td>
+														<td class="text-center"><?=$nilai_peserta['komentar']?></td>
 														<td class="text-center">
 															<?php
 															if ($nilai_peserta['rekomendasi'] == 'ya'){
-																?><span class="badge badge-success">Ya</span><?php
+																?>
+																<button type="button" class="btn btn-sm btn-circle btn-alt-success mr-5 mb-5">
+																	<i class="fa fa-check"></i>
+																</button>
+																<?php
 															}
 															else if ($nilai_peserta['rekomendasi'] == 'tidak'){
-																?><span class="badge badge-danger">Tidak</span><?php
+																?>
+																<button type="button" class="btn btn-sm btn-circle btn-alt-danger mr-5 mb-5">
+																	<i class="fa fa-times"></i>
+																</button>
+																<?php
 															}
 															else{
 																?><span> </span><?php
@@ -365,29 +364,6 @@ foreach ($asisten as $detail) : ?>
 															?>
 														</td>
 														<td class="text-center"><?=$nilai_peserta['nama_penilai']?></td>
-														<td class="text-center">
-															<div class="btn-group">
-																<?php
-																if ($nilai_peserta['hasil'] == 'lulus'){
-																	?>
-																	<button type="button" class="btn btn-sm btn-circle btn-alt-success mr-5 mb-5">
-																		<i class="fa fa-check"></i>
-																	</button>
-																	<?php
-																}
-																else if ($nilai_peserta['hasil'] == 'tidak'){
-																	?>
-																	<button type="button" class="btn btn-sm btn-circle btn-alt-danger mr-5 mb-5">
-																		<i class="fa fa-times"></i>
-																	</button>
-																	<?php
-																}
-																else{
-																	?><span> </span><?php
-																}
-																?>
-															</div>
-														</td>
 													</tr>
 												<?php endforeach ?>
 												</tbody>

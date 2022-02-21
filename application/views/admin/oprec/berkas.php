@@ -182,184 +182,6 @@
 		<?php } ?>
 
 		<?php
-		if($this->session->userdata('sebagai') == 'admin'){ ?>
-		<!-- Admin -->
-		<nav class="breadcrumb bg-white push">
-			<a class="breadcrumb-item" href="">Manlan</a>
-			<span class="breadcrumb-item active">Berkas</span>
-			<span class="breadcrumb-item active">Admin</span>
-			<span class="breadcrumb-item active"><?=ucfirst($this->auth_libs->user_login()->nama);?></span>
-		</nav>
-		<div class="block block-rounded">
-			<div class="block-content">
-				<div class="block block-rounded">
-					<div class="block-content">
-                      <?php $this->load->view('admin/oprec/total_seleksiberkas');?>
-						<div class="table-responsive">
-							<table class="table table-bordered table-striped table-vcenter" id="tabel-peserta">
-								<thead>
-								<tr class="table-active">
-									<th class="text-center" style="width: 100px;"><b>Foto</b></th>
-									<th><b>Nama</b></th>
-									<th class="text-center" style="width: 20%;"><b>Sebagai</b></th>
-									<th class="text-center" style="width: 20%;"><b>CV</b></th>
-									<th class="text-center" style="width: 20%;"><b>Surat</b></th>
-									<th class="text-center" style="width: 20%;"><b>Nilai</b></th>
-									<th class="text-center" style="width: 20%;"><b>Krs</b></th>
-									<th class="text-center" style="width: 20%;"><b>Ktm</b></th>
-									<th class="text-center" style="width: 20%;"><b>Sertif</b></th>
-									<th class="text-center" style="width: 15%;"><b>Status</b></th>
-									<th class="text-center" style="width: 100px;"><b><i class="fa fa-cog"></i></b></th>
-								</tr>
-								</thead>
-									<tbody>
-									<?php
-									$list_sebagai = array('calonasisten', 'calonprogrammer');
-									$this->db->select('*');
-									$this->db->from('manlan_admin');
-									$this->db->where_in('sebagai', $list_sebagai);
-									$admin = $this->db->get()->result_array();
-									foreach ($admin as $aslab) : ?>
-									<tr>
-										<td class="text-center">
-											<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$aslab['nama']?>/<?=$aslab['foto']?>" width="200" height="200" alt="">
-										</td>
-										<td class="font-w600"><b><?=$aslab['nama']?></b></td>
-										<?php
-										if($aslab['sebagai'] == 'calonasisten'){
-											?>
-											<td class="text-center"><b>Calon Asisten</b></td>
-											<?php
-										}
-										else if($aslab['sebagai'] == 'calonprogrammer'){
-											?>
-											<td class="text-center"><b>Calon Programmer</b></td>
-											<?php
-										}
-										?>
-										<td>
-											<?php
-											if($aslab['cv'] == ''){
-												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
-												<?php
-											}
-											else{
-												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
-												<?php
-											}
-											?>
-										</td>
-										<td>
-											<?php
-											if($aslab['surat_lamaran'] == ''){
-												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
-												<?php
-											}
-											else{
-												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
-												<?php
-											}
-											?>
-										</td>
-										<td>
-											<?php
-											if($aslab['rangkuman_nilai'] == ''){
-												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
-												<?php
-											}
-											else{
-												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
-												<?php
-											}
-											?>
-										</td>
-										<td>
-											<?php
-											if($aslab['krs_upload'] == ''){
-												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
-												<?php
-											}
-											else{
-												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
-												<?php
-											}
-											?>
-										</td>
-										<td>
-											<?php
-											if($aslab['ktm_upload'] == ''){
-												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
-												<?php
-											}
-											else{
-												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
-												<?php
-											}
-											?>
-										</td>
-										<td>
-											<?php
-											if($aslab['sertifikat'] == ''){
-												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
-												<?php
-											}
-											else{
-												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
-												<?php
-											}
-											?>
-										</td>
-										<td class="text-center">
-											<?php
-											if($aslab['seleksi_berkas'] == 'ya'){
-												?>
-												<span class="badge badge-success">Lulus</span>
-												<?php
-											}
-											else if($aslab['seleksi_berkas'] == 'tidak'){
-												?>
-												<span class="badge badge-danger">Tolak</span><br>
-												<?php
-											}
-											else {
-												?>
-												<span class="badge badge-warning">Proses</span><br>
-												<?php
-											}
-											?>
-										</td>
-										<td class="text-center">
-											<div class="btn-group">
-												<a type="button" href="<?=base_url('oprec/berkas/')?>" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#berkas_asisten<?= $aslab['id_user'] ?>" title="Detail">
-													<i>Cek Berkas</i>
-												</a>
-											</div>
-										</td>
-									</tr>
-									<?php endforeach ?>
-									</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- END Admin -->
-		<?php } ?>
-
-		<?php
 		if($this->session->userdata('sebagai') == 'asisten' || $this->session->userdata('sebagai') == 'programmer' || $this->session->userdata('sebagai') == 'admin'){ ?>
 		<!-- Asisten & Programmer -->
 		<nav class="breadcrumb bg-white push">
@@ -379,6 +201,7 @@
 									<tr class="table-active">
 										<th class="text-center" style="width: 100px;"><b>Foto</b></th>
 										<th><b>Nama</b></th>
+										<th class="text-center" style="width: 20%;"><b>Kelas</b></th>
 										<th class="text-center" style="width: 20%;"><b>Sebagai</b></th>
 										<th class="text-center" style="width: 20%;"><b>CV</b></th>
 										<th class="text-center" style="width: 20%;"><b>Surat</b></th>
@@ -387,7 +210,7 @@
 										<th class="text-center" style="width: 20%;"><b>Ktm</b></th>
 										<th class="text-center" style="width: 20%;"><b>Sertif</b></th>
 										<th class="text-center" style="width: 15%;"><b>Status</b></th>
-										<th class="text-center" style="width: 15%;"><b>Aksi</b></th>
+										<th class="text-center" style="width: 100px;"><b>Hasil_Seleksi</b></th>
 										<th class="text-center" style="width: 100px;"><b><i class="fa fa-cog"></i></b></th>
 									</tr>
 								</thead>
@@ -397,6 +220,7 @@
 									$this->db->select('*');
 									$this->db->from('manlan_admin');
 									$this->db->where_in('sebagai', $list_sebagai);
+									$this->db->order_by('nama','asc');
 									$asisten = $this->db->get()->result_array();
 									foreach ($asisten as $aslab) : ?>
 									<tr>
@@ -404,7 +228,7 @@
 											<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$aslab['nama']?>/<?=$aslab['foto']?>" width="200" height="200" alt="">
 										</td>
 										<td class="font-w600"><b><?=$aslab['nama']?></b></td>
-										<?php
+										<td class="font-w600"><b><?=$aslab['kelas']?></b></td>										<?php
 										if($aslab['sebagai'] == 'calonasisten'){
 											?>
 											<td class="text-center"><b>Calon Asisten</b></td>
@@ -420,12 +244,12 @@
 											<?php
 											if($aslab['cv'] == ''){
 												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/><br>Tidak
 												<?php
 											}
 											else{
 												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/><br>Ya
 												<?php
 											}
 											?>
@@ -434,12 +258,13 @@
 											<?php
 											if($aslab['surat_lamaran'] == ''){
 												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/><br>Tidak
 												<?php
 											}
 											else{
 												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/><br>Ya
+
 												<?php
 											}
 											?>
@@ -448,12 +273,13 @@
 											<?php
 											if($aslab['rangkuman_nilai'] == ''){
 												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/><br>Tidak
 												<?php
 											}
 											else{
 												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/><br>Ya
+
 												<?php
 											}
 											?>
@@ -462,12 +288,13 @@
 											<?php
 											if($aslab['krs_upload'] == ''){
 												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/><br>Tidak
 												<?php
 											}
 											else{
 												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/><br>Ya
+
 												<?php
 											}
 											?>
@@ -476,12 +303,13 @@
 											<?php
 											if($aslab['ktm_upload'] == ''){
 												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/><br>Tidak
 												<?php
 											}
 											else{
 												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/><br>Ya
+
 												<?php
 											}
 											?>
@@ -490,12 +318,13 @@
 											<?php
 											if($aslab['sertifikat'] == ''){
 												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/><br>Tidak
 												<?php
 											}
 											else{
 												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/><br>Ya
+
 												<?php
 											}
 											?>
@@ -576,6 +405,7 @@
 								<tr class="table-active">
 									<th class="text-center" style="width: 100px;"><b>Foto</b></th>
 									<th><b>Nama</b></th>
+									<th class="text-center" style="width: 20%;"><b>Kelas</b></th>
 									<th class="text-center" style="width: 20%;"><b>Sebagai</b></th>
 									<th class="text-center" style="width: 20%;"><b>CV</b></th>
 									<th class="text-center" style="width: 20%;"><b>Surat</b></th>
@@ -593,6 +423,7 @@
 									$this->db->select('*');
 									$this->db->from('manlan_admin');
 									$this->db->where_in('sebagai', $list_sebagai);
+									$this->db->order_by('nama','asc');
 									$staff = $this->db->get()->result_array();
 									foreach ($staff as $aslab) : ?>
 									<tr>
@@ -600,6 +431,7 @@
 											<img class="img-avatar img-avatar48" src="<?=base_url('assets/upload/foto/')?><?=$aslab['nama']?>/<?=$aslab['foto']?>" width="200" height="200" alt="">
 										</td>
 										<td class="font-w600"><b><?=$aslab['nama']?></b></td>
+										<td class="font-w600"><b><?=$aslab['kelas']?></b></td>
 										<?php
 										if($aslab['sebagai'] == 'calonasisten'){
 											?>
@@ -616,12 +448,12 @@
 											<?php
 											if($aslab['cv'] == ''){
 												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/><br>Tidak
 												<?php
 											}
 											else{
 												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/><br>Ya
 												<?php
 											}
 											?>
@@ -630,12 +462,12 @@
 											<?php
 											if($aslab['surat_lamaran'] == ''){
 												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/><br>Tidak
 												<?php
 											}
 											else{
 												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/><br>Ya
 												<?php
 											}
 											?>
@@ -644,12 +476,12 @@
 											<?php
 											if($aslab['rangkuman_nilai'] == ''){
 												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/><br>Tidak
 												<?php
 											}
 											else{
 												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/><br>Ya
 												<?php
 											}
 											?>
@@ -658,12 +490,12 @@
 											<?php
 											if($aslab['krs_upload'] == ''){
 												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/><br>Tidak
 												<?php
 											}
 											else{
 												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/><br>Ya
 												<?php
 											}
 											?>
@@ -672,12 +504,12 @@
 											<?php
 											if($aslab['ktm_upload'] == ''){
 												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/><br>Tidak
 												<?php
 											}
 											else{
 												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/><br>Ya
 												<?php
 											}
 											?>
@@ -686,12 +518,12 @@
 											<?php
 											if($aslab['sertifikat'] == ''){
 												?>
-												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/>
+												<img src="https://img.icons8.com/ios-filled/26/fa314a/multiply.png"/><br>Tidak
 												<?php
 											}
 											else{
 												?>
-												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/>
+												<img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/26e07f/external-approved-checkmark-symbol-to-verify-the-result-basic-bold-tal-revivo.png"/><br>Ya
 												<?php
 											}
 											?>

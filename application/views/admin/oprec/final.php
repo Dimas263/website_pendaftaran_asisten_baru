@@ -25,10 +25,10 @@ if ($lock_final == 'ya'){
 							<br><br>
 							<h3 class="font-w700 mb-10">Selamat</h3>
 							<?php if($this->session->userdata('sebagai') == 'calonasisten' || $this->session->userdata('sebagai') == 'calonprogrammer') { ?> <h4 class="font-w400 text-muted mb-30">Anda telah lolos dan terpilih menjadi asisten laboratorium manajemen lanjut</h4><?php } ?>
-							<?php if($this->session->userdata('sebagai') == 'asisten' || $this->session->userdata('sebagai') == 'programmer') { ?> <h4 class="font-w400 text-muted mb-30">Ayo Kawan, Asisten dan Programmer mari bergabung ke grup Asisten Baru laboratorium manajemen lanjut</h4><?php } ?>
+							<?php if($this->session->userdata('sebagai') == 'asisten' || $this->session->userdata('sebagai') == 'programmer') { ?> <h4 class="font-w400 text-muted mb-30">Ayo Kawan, Asisten dan Programmer <br>Mari bergabung ke grup Asisten Baru laboratorium manajemen lanjut 27/28/29</h4><?php } ?>
 							<?php if($this->session->userdata('sebagai') == 'staff') { ?> <h4 class="font-w400 text-muted mb-30">Terima Kasih Ibu Tika, Pak Agus, Pak Ibnu, dan Ibu Dini yang telah membantu proses seleksi open recruitment Asisten dan Programmer laboratorium manajemen lanjut</h4><?php } ?>
 							<?php if($this->session->userdata('sebagai') == 'admin') { ?> <h4 class="font-w400 text-muted mb-30">Ayo Min ikutan gabung grup whatsapp bersama asisten dan programmer baru laboratorium manajemen lanjut</h4><?php } ?>
-							<?php if($this->session->userdata('sebagai') == 'staff') { }else { ?> <a class="btn btn-hero btn-noborder btn-lg btn-rounded btn-success" href="javascript:void(0)">Gabung Whatsapp</a><?php } ?>
+							<?php if($this->session->userdata('sebagai') == 'staff') { }else { ?> <a class="btn btn-hero btn-noborder btn-lg btn-rounded btn-success" href="https://chat.whatsapp.com/E0rrlqGbjRl3LiJH0zj1se" target="_blank">Gabung Whatsapp</a><?php } ?>
 						</div>
 					</div>
 				</div>

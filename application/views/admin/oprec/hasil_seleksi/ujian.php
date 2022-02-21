@@ -19,9 +19,21 @@
 			<tbody>
 			<tr>
 				<td class="text-center">
-					<a type="button" class="block-content block-content-full block-content-sm btn btn-outline-success" data-toggle="tooltip" title="Lihat Soal">
-						Lihat Soal Ujian
+					<?php
+					if($this->session->userdata('sebagai') == 'calonasisten'){?>
+					<a type="button" href="https://bit.ly/3ryzQZ9" target="_blank" class="block-content block-content-full block-content-sm btn btn-outline-success" data-toggle="tooltip" title="Lihat Soal">
+						Lihat Soal Ujian Asisten
 					</a>
+					<?php
+					}
+					else if($this->session->userdata('sebagai') == 'calonprogrammer'){?>
+					<a type="button" href="https://bit.ly/3JbZAR7" target="_blank" class="block-content block-content-full block-content-sm btn btn-outline-success" data-toggle="tooltip" title="Lihat Soal">
+						Lihat Soal Ujian Programmer
+					</a>
+					<?php
+					}
+					?>
+
 				</td>
 				<td class="text-center">
 					<?php

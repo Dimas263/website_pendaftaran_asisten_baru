@@ -32,6 +32,83 @@
 			<span class="breadcrumb-item active">Peserta</span>
 			<span class="breadcrumb-item active"><?=ucfirst($this->auth_libs->user_login()->nama);?></span>
 		</nav>
+
+		<!-- Pengumuman Bekas -->
+		<?php
+		$lock_ujian = $this->auth_libs->user_login()->seleksi_berkas;
+		if ($lock_ujian == 'ya'){
+			?>
+			<nav class="breadcrumb bg-success push">
+				<span class="breadcrumb-item active"><i class="fa fa-fw fa-check"></i> Selamat <?=ucfirst($this->auth_libs->user_login()->nama);?>, anda lulus <b>seleksi berkas</b></span>
+			</nav>
+			<?php
+		}
+		else if ($lock_ujian == 'tidak'){
+			?>
+			<nav class="breadcrumb bg-danger push">
+				<span class="breadcrumb-item active"><i class="fa fa-fw fa-times"></i> Maaf <?=ucfirst($this->auth_libs->user_login()->nama);?>, anda tidak lulus <b>seleksi berkas</b></span>
+			</nav>
+			<?php
+		}
+		?>
+
+		<!-- Pengumuman Ujian -->
+		<?php
+		$lock_wawancara = $this->auth_libs->user_login()->seleksi_ujian;
+		if ($lock_wawancara == 'ya'){
+			?>
+			<nav class="breadcrumb bg-success push">
+				<span class="breadcrumb-item active"><i class="fa fa-fw fa-check"></i> Selamat <?=ucfirst($this->auth_libs->user_login()->nama);?>, anda lulus <b>Tahap Ujian</b></span>
+			</nav>
+			<?php
+		}
+		else if ($lock_wawancara == 'tidak'){
+			?>
+			<nav class="breadcrumb bg-danger push">
+				<span class="breadcrumb-item active"><i class="fa fa-fw fa-times"></i> Maaf <?=ucfirst($this->auth_libs->user_login()->nama);?>, anda tidak lulus <b>Tahap Ujian</b></span>
+			</nav>
+			<?php
+		}
+		?>
+
+		<!-- Pengumuman Wawancara -->
+		<?php
+		$lock_staff = $this->auth_libs->user_login()->seleksi_wawancara;
+		if ($lock_staff == 'ya'){
+			?>
+			<nav class="breadcrumb bg-success push">
+				<span class="breadcrumb-item active"><i class="fa fa-fw fa-check"></i> Selamat <?=ucfirst($this->auth_libs->user_login()->nama);?>, anda lulus <b>Tahap 2 - Tutor, Wawancara, dan Pemrograman (Programmer)</b></span>
+			</nav>
+			<?php
+		}
+		else if ($lock_staff == 'tidak'){
+			?>
+			<nav class="breadcrumb bg-danger push">
+				<span class="breadcrumb-item active"><i class="fa fa-fw fa-times"></i> Maaf <?=ucfirst($this->auth_libs->user_login()->nama);?>, anda tidak lulus <b>Tahap 2 - Tutor, Wawancara, dan Pemrograman (Programmer)</b></span>
+			</nav>
+			<?php
+		}
+		?>
+
+		<!-- Pengumuman Staff -->
+		<?php
+		$lock_finish = $this->auth_libs->user_login()->seleksi_staff;
+		if ($lock_finish == 'ya'){
+			?>
+			<nav class="breadcrumb bg-success push">
+				<span class="breadcrumb-item active"><i class="fa fa-fw fa-check"></i> Selamat <?=ucfirst($this->auth_libs->user_login()->nama);?>, anda lulus <b>Tahap 3 - Wawancara Staff</b></span>
+			</nav>
+			<?php
+		}
+		else if ($lock_finish == 'tidak'){
+			?>
+			<nav class="breadcrumb bg-danger push">
+				<span class="breadcrumb-item active"><i class="fa fa-fw fa-times"></i> Maaf <?=ucfirst($this->auth_libs->user_login()->nama);?>, anda tidak lulus <b>Tahap 3 - Wawancara Staff</b></span>
+			</nav>
+			<?php
+		}
+		?>
+
 		<div class="block block-rounded">
 			<div class="block-content">
 				<!-- Introduction -->
@@ -229,6 +306,7 @@
 								$this->db->select('*');
 								$this->db->from('manlan_admin');
 								$this->db->where_in('sebagai', $list_sebagai);
+								$this->db->order_by('nama','asc');
 								$asisten = $this->db->get()->result_array();
 								foreach ($asisten as $aslab) : ?>
 									<tr>
@@ -361,6 +439,7 @@
 								$this->db->select('*');
 								$this->db->from('manlan_admin');
 								$this->db->where_in('sebagai', $list_sebagai);
+								$this->db->order_by('nama','asc');
 								$staff = $this->db->get()->result_array();
 								foreach ($staff as $aslab) : ?>
 								<tr>

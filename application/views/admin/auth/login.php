@@ -81,7 +81,7 @@
 											<span class="text-danger">password yang didaftarkan saat membuat akun</span>
 											<br><br>
 											<span class="text-black"><b>Lupa password atau tidak bisa masuk ?</b></span><br>
-											<span class="text-black">login dengan password "<span class="text-primary"><b>calonasisten</b></span>", dan ganti password anda setelah login berhasil</span>
+											<span class="text-black">login dengan password "<span class="text-primary"><b>calonasisten</b></span>" dan ganti password anda setelah login berhasil</span>
 										</div>
 									</div>
 									<div class="form-group row mb-0">
