@@ -5,9 +5,11 @@ Universitas Gunadarma
 ## Tampilan Aplikasi
 
 Public
+
 <img src="assets/demo.gif" alt="alt text" width="600"/>
 
 Admin
+
 <img src="assets/demo2.gif" alt="alt text" width="600"/>
 
 ## Demo Aplikasi
