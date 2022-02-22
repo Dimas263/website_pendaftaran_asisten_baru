@@ -107,6 +107,11 @@ class Oprec extends CI_Controller
 		$this->Data_m->seleksi_ujian();
 		redirect(base_url('oprec/ujian'));
 	}
+	public function seleksi_wawancaratutor(){
+		check_not_login();
+		$this->Data_m->seleksi_wawancaratutor();
+		redirect(base_url('oprec/tutor'));
+	}
 	public function nilaiseleksi_ujian(){
 		check_not_login();
 		$this->Data_m->nilaiseleksi_ujian();

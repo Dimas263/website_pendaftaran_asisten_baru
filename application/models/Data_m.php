@@ -148,6 +148,12 @@ class Data_m extends CI_Model
 			echo "<script>alert('Data Berhasil Disimpan');</script>";
 		}
 	}
+	public function seleksi_wawancaratutor(){
+		$this->db->set('seleksi_wawancara', $_POST['seleksi_wawancaratutor']);
+		$this->db->where('id_user', $_POST['id_user']);
+		$this->db->update('manlan_admin');
+		echo "<script>alert('Data Berhasil Disimpan');</script>";
+	}
 	public function seleksi_wawancara(){
 		/*
 		$ql = $this->db->select('nama_penilai')->from('manlan_nilaitutor')->where('nama_penilai',$_POST['nama_penilai'])->get();

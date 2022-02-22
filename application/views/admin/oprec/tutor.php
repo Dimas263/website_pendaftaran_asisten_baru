@@ -44,10 +44,11 @@
 									<th class="text-center" style="width: 8%;"><b>No</b></th>
 									<th class="text-left" style="width: 28%;"><b>Nama</b></th>
 									<th class="text-center" style="width: 25%;"><b>Sebagai</b></th>
-									<th class="text-center" style="width: 20%;"><b>Status</b></th>
 									<th class="text-center" style="width: 20%;"><b>Tutor</b></th>
 									<th class="text-center" style="width: 20%;"><b>Wawancara</b></th>
 									<th class="text-center" style="width: 20%;"><b>Pemrograman</b></th>
+									<th class="text-center" style="width: 20%;"><b>Status</b></th>
+									<th class="text-center" style="width: 100px;"><b>Hasil_Seleksi</b></th>
 								</tr>
 								</thead>
 									<tbody>
@@ -66,25 +67,6 @@
 										<td class="text-center"><?php echo $no++ ?></td>
 										<td class="font-w600"><?php echo $aslab['nama'] ?></td>
 										<td class="text-center font-w600"><?php echo $aslab['sebagai'] ?></td>
-										<td class="text-center">
-											<?php
-											if($aslab['seleksi_wawancara'] == 'ya'){
-												?>
-												<span class="badge badge-success">Lulus</span>
-												<?php
-											}
-											else if($aslab['seleksi_wawancara'] == 'tidak'){
-												?>
-												<span class="badge badge-danger">Tolak</span><br>
-												<?php
-											}
-											else {
-												?>
-												<span class="badge badge-warning">Proses</span><br>
-												<?php
-											}
-											?>
-										</td>
 										<td class="text-center">
 											<div class="btn-group">
 												<button type="button" class="btn btn-sm btn-alt-success" data-toggle="modal" data-target="#nilai_asistentutor<?= $aslab['id_user'] ?>" title="Nilai">
@@ -117,6 +99,42 @@
 													<i>Review</i>
 												</button>
 											</div>
+										</td>
+										<td class="text-center">
+											<?php
+											if($aslab['seleksi_wawancara'] == 'ya'){
+												?>
+												<span class="badge badge-success">Lulus</span>
+												<?php
+											}
+											else if($aslab['seleksi_wawancara'] == 'tidak'){
+												?>
+												<span class="badge badge-danger">Tolak</span><br>
+												<?php
+											}
+											else {
+												?>
+												<span class="badge badge-warning">Proses</span><br>
+												<?php
+											}
+											?>
+										</td>
+										<td class="text-center">
+											<form action="<?=base_url('Oprec/seleksi_wawancaratutor')?>" method="post">
+												<div class="form-group">
+													<input type="hidden" name="id_user" class="form-control" value="<?=$aslab['id_user']?>">
+													<select class="form-control" name="seleksi_wawancaratutor" id="seleksi_wawancaratutor" required>
+														<option value=" ">Hasil</option>
+														<option value="ya">Terima</option>
+														<option value="tidak">Tolak</option>
+													</select>
+												</div>
+												<div class="form-group">
+													<button type="submit" name="submit" class="btn btn-sm btn-alt-primary">
+														<i>Submit</i>
+													</button>
+												</div>
+											</form>
 										</td>
 									</tr>
 									<?php endforeach ?>
