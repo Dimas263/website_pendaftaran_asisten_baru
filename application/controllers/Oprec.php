@@ -112,6 +112,11 @@ class Oprec extends CI_Controller
 		$this->Data_m->seleksi_wawancaratutor();
 		redirect(base_url('oprec/tutor'));
 	}
+	public function seleksi_wawancarastaff(){
+		check_not_login();
+		$this->Data_m->seleksi_wawancarastaff();
+		redirect(base_url('oprec/staff'));
+	}
 	public function nilaiseleksi_ujian(){
 		check_not_login();
 		$this->Data_m->nilaiseleksi_ujian();
@@ -140,5 +145,11 @@ class Oprec extends CI_Controller
 	public function forgot(){
 		check_not_login();
 		$this->load->view("admin/auth/forgot");
+	}
+	public function pengumuman(){
+		$this->load->view("admin/oprec/redirect_asbar");
+	}
+	public function asistenbaru2022(){
+		$this->load->view("admin/oprec/asistenbaru");
 	}
 }

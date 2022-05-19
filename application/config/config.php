@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/bangkinglab_ug/pendaftaran%20asisten%20baru/';
+$config['base_url'] = 'https://webku.one/manlan/';
 
 /*
 |--------------------------------------------------------------------------

@@ -7,7 +7,7 @@
 				<img class="img-fluid img-thumbnail rounded-circle user-img mb-1" src="<?=base_url('assets/admin/assets/media/favicons/bangkinglab_ug.png')?>" width="24" alt="" /><a class="font-w600" href="https://ma-lanjut.lab.gunadarma.ac.id" target="_blank">Lab Manajemen Lanjut</a>
 			</div>
 			<div class="float-left">
-				<a class="font-w600" href="https://instagram.com/dimas263_" target="_blank">&copy;Dimas263</a>
+				<a class="font-w600" href="https://webku.one/ceo" target="_blank">&copy;DimasDesktop</a>
 			</div>
 		</div>
 	</footer>

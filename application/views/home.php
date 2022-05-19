@@ -340,14 +340,14 @@
 				</div>
 			</div>
 			<div class="col-lg-2 mt-lg-0 mt-4">
-				<img class="img-fluid rounded mb-4" src="<?=base_url('assets/public/')?>images/activity_2.png" alt="" />
-				<img class="img-fluid rounded" src="<?=base_url('assets/public/')?>images/activity_3.png" alt="" />
+				<img class="img-fluid rounded mb-4" src="<?=base_url('assets/public/images/activity_2.png')?>" alt="" />
+				<img class="img-fluid rounded" src="<?=base_url('assets/public/images/activity_3.png')?>" alt="" />
 			</div>
 			<div class="col-lg-3 mt-lg-0 mt-4">
-				<img class="img-fluid rounded" src="<?=base_url('assets/public/')?>images/activity_5.png" alt="" />
+				<img class="img-fluid rounded" src="<?=base_url('assets/public/images/activity_5.png')?>" alt="" />
 			</div>
 			<div class="col-lg-2 mt-lg-0 mt-4">
-				<img class="img-fluid rounded" src="<?=base_url('assets/public/')?>images/activity_4.png" alt="" />
+				<img class="img-fluid rounded" src="<?=base_url('assets/public/mages/activity_4.png')?>i" alt="" />
 			</div>
 		</div>
 	</div>

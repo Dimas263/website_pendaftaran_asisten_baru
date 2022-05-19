@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 text-white">
-				<p>2021 © bangkinglab_ug. Created by <a class="text-white" href="https://instagram.com/dimas263_">Dimas263</a></p>
+				<p>2021 © bangkinglab_ug. Created by <a class="text-white" href="https://webku.one/ceo">DimasDesktop</a></p>
 			</div>
 			<div class="col-sm-6 text-sm-end">
 				<ul class="list-unstyled footer-alt-list mb-0 mt-sm-0 mt-3">

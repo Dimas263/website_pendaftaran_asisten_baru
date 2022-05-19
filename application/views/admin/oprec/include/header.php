@@ -28,7 +28,8 @@
 	<link rel="stylesheet" href="<?=base_url('assets/admin/')?>assets/js/plugins/datatables/dataTables.bootstrap4.css">
 
 </head>
-<body oncontextmenu="return false;">
+<!-- <body oncontextmenu="return false;"> -->
+<body>
 	<div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-modern main-content-boxed">
 
 		<header id="page-header">

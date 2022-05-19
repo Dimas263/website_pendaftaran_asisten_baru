@@ -154,6 +154,22 @@ class Data_m extends CI_Model
 		$this->db->update('manlan_admin');
 		echo "<script>alert('Data Berhasil Disimpan');</script>";
 	}
+	public function seleksi_wawancarastaff(){
+		if ($_POST['seleksi_wawancarastaff']== 'ya'){
+			$hasil_seleksiwawancarastaff = 'lulus';
+		}
+		else if ($_POST['seleksi_wawancarastaff']== 'tidak'){
+			$hasil_seleksiwawancarastaff = 'tidak';
+		}
+		else {
+			$hasil_seleksiwawancarastaff = 'proses';
+		}
+		$this->db->set('seleksi_staff', $_POST['seleksi_wawancarastaff']);
+		$this->db->set('status_peserta', $hasil_seleksiwawancarastaff);
+		$this->db->where('id_user', $_POST['id_user']);
+		$this->db->update('manlan_admin');
+		echo "<script>alert('Data Berhasil Disimpan');</script>";
+	}
 	public function seleksi_wawancara(){
 		/*
 		$ql = $this->db->select('nama_penilai')->from('manlan_nilaitutor')->where('nama_penilai',$_POST['nama_penilai'])->get();

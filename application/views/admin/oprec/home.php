@@ -32,7 +32,51 @@
 			<span class="breadcrumb-item active">Peserta</span>
 			<span class="breadcrumb-item active"><?=ucfirst($this->auth_libs->user_login()->nama);?></span>
 		</nav>
+		<h3 class="text-center">Pencapaian Anda</h3>
+		<h3 class="text-center">
 
+				<?php
+				$selek_berkas = $this->auth_libs->user_login()->seleksi_berkas;
+				$selek_ujian = $this->auth_libs->user_login()->seleksi_ujian;
+				$selek_wawancara = $this->auth_libs->user_login()->seleksi_wawancara;
+				$selek_staff = $this->auth_libs->user_login()->seleksi_staff;
+
+				if($selek_berkas != 'ya' && $selek_ujian != 'ya' && $selek_wawancara != 'ya' && $selek_staff != 'ya'){
+					?>
+					<div class="text-black">Tahap Berkas</div>
+					<?php
+				}
+				?>
+				<?php
+				if($selek_berkas == 'ya' && $selek_ujian != 'ya' && $selek_wawancara != 'ya' && $selek_staff != 'ya'){
+					?>
+					<div class="text-black">Tahap Ujian</div>
+					<?php
+				}
+				?>
+				<?php
+				if($selek_berkas == 'ya' && $selek_ujian == 'ya' && $selek_wawancara != 'ya' && $selek_staff != 'ya'){
+					?>
+					<div class="ext-black">Tahap Tutor, Wawancara, dan Pemrograman (Programmer)</div>
+					<?php
+				}
+				?>
+				<?php
+				if($selek_berkas == 'ya' && $selek_ujian == 'ya' && $selek_wawancara == 'ya' && $selek_staff != 'ya'){
+					?>
+					<div class="text-black">Tahap Staff</div>
+					<?php
+				}
+				?>
+				<?php
+				if($selek_berkas == 'ya' && $selek_ujian = 'ya' && $selek_wawancara == 'ya' && $selek_staff == 'ya'){
+					?>
+					<div class="text-black">Lulus Semua Seleksi</div>
+					<?php
+				}
+				?>
+
+		</h3>
 		<!-- Pengumuman Bekas -->
 		<?php
 		$lock_ujian = $this->auth_libs->user_login()->seleksi_berkas;
@@ -239,7 +283,8 @@
 					<tr class="table-active">
 						<?php
 						$lock_finish = $this->auth_libs->user_login()->seleksi_staff;
-						if ($lock_finish == 'ya'){
+						$lock_finish2 = $this->auth_libs->user_login()->status_peserta;
+						if ($lock_finish == 'ya' && $lock_finish2 == 'lulus'){
 							?>
 							<th class="table-danger text-center" style="width: 50px;">
 								<i class="fa fa-fw fa-unlock text-success"></i>

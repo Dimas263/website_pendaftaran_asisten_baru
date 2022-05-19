@@ -1,6 +1,7 @@
 <?php
 $lock_final = $this->auth_libs->user_login()->seleksi_staff;
-if ($lock_final == 'ya'){
+$lock_final2 = $this->auth_libs->user_login()->status_peserta;
+if ($lock_final == 'ya' && $lock_final2 == 'lulus'){
 	?>
 	<main id="main-container">
 		<div class="content">
@@ -28,7 +29,7 @@ if ($lock_final == 'ya'){
 							<?php if($this->session->userdata('sebagai') == 'asisten' || $this->session->userdata('sebagai') == 'programmer') { ?> <h4 class="font-w400 text-muted mb-30">Ayo Kawan, Asisten dan Programmer <br>Mari bergabung ke grup Asisten Baru laboratorium manajemen lanjut 27/28/29</h4><?php } ?>
 							<?php if($this->session->userdata('sebagai') == 'staff') { ?> <h4 class="font-w400 text-muted mb-30">Terima Kasih Ibu Tika, Pak Agus, Pak Ibnu, dan Ibu Dini yang telah membantu proses seleksi open recruitment Asisten dan Programmer laboratorium manajemen lanjut</h4><?php } ?>
 							<?php if($this->session->userdata('sebagai') == 'admin') { ?> <h4 class="font-w400 text-muted mb-30">Ayo Min ikutan gabung grup whatsapp bersama asisten dan programmer baru laboratorium manajemen lanjut</h4><?php } ?>
-							<?php if($this->session->userdata('sebagai') == 'staff') { }else { ?> <a class="btn btn-hero btn-noborder btn-lg btn-rounded btn-success" href="https://chat.whatsapp.com/E0rrlqGbjRl3LiJH0zj1se" target="_blank">Gabung Whatsapp</a><?php } ?>
+							<?php if($this->session->userdata('sebagai') == 'staff') { }else { ?> <a class="btn btn-hero btn-noborder btn-lg btn-rounded btn-success" href="#" target="_blank">Gabung Whatsapp</a><?php } ?>
 						</div>
 					</div>
 				</div>
