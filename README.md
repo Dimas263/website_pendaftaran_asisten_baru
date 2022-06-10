@@ -1,8 +1,8 @@
-# Website Pendaftaran Asisten Baru
+# <img src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/undefined/external-register-nursing-flaticons-flat-flat-icons.png"/> Website Pendaftaran Asisten Baru
 Open recruitment laboratorium manajemen lanjut
 Universitas Gunadarma
 
-## Tampilan Aplikasi
+## <img src="https://img.icons8.com/color/48/undefined/1-circle--v1.png"/> Tampilan Aplikasi
 
 Public
 
@@ -12,7 +12,7 @@ Admin
 
 <img src="assets/demo2.gif" alt="alt text" width="600"/>
 
-## Demo Aplikasi
+## <img src="https://img.icons8.com/color/48/undefined/2-circle--v1.png"/> Demo Aplikasi
 [Link Website - Oprec Manlan](http://webku.one/manlan)
 
 ## License
