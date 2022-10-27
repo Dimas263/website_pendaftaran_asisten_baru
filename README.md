@@ -13,7 +13,7 @@ Admin
 <img src="assets/demo2.gif" alt="alt text" width="600"/>
 
 ## <img src="https://img.icons8.com/color/48/undefined/2-circle--v1.png"/> Demo Aplikasi
-[Link Website - Oprec Manlan](http://webku.one/manlan)
+[Link Website - Oprec Manlan](http://webku.one/app/manlan)
 
 ## License
                                  Apache License
